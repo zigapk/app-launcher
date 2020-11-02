@@ -83,7 +83,7 @@ class DesktopEntries {
       if (config.hasOption(SECTION_DESKTOP_ENTRY, ITEM_KEYWORDS))
         keywords = config.get(SECTION_DESKTOP_ENTRY, ITEM_KEYWORDS).split(';');
       if (config.hasOption(SECTION_DESKTOP_ENTRY, ITEM_CATEGORIES))
-        keywords =
+        categories =
             config.get(SECTION_DESKTOP_ENTRY, ITEM_CATEGORIES).split(';');
 
       // name of the desktop file without .desktop appendix to use for gtk-launch
