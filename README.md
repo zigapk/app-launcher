@@ -11,3 +11,12 @@ Goals:
 - [ ] Quick search over desktop files.
 - [ ] Launch apps via `gtk-launcher`.
 - [ ] Maybe a simple calculator by executing one-line Python commands.
+
+
+Dependencies (incomplete):
+- [flutter](https://flutter.io)
+- [gtk-layer-shell](https://github.com/wmww/gtk-layer-shell/)
+- gsettings for reading the icon theme
+
+TODO:
+- check for dependencies in Cmake
