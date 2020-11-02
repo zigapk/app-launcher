@@ -26,6 +26,10 @@ dependencies:
 
   ini: ^2.0.1
   threading: ^0.0.10
+  full_text_search:
+    git:
+      url: git://github.com/zigapk/full_text_search.git
+  provider: ^4.3.2+2
 
 
   # The following adds the Cupertino Icons font to your application.

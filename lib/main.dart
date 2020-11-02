@@ -1,31 +1,23 @@
-import 'package:app_launcher/desktop/entries.dart';
+import 'package:app_launcher/models/app_state.dart';
+import 'package:app_launcher/search.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<AppState>(create: (_) => AppState()),
+    ],
+    child: App(),
+  ));
 }
 
-// mamo reda 200 filov k jih je treba hitr sparasat pa searchat
-// k se odpre mors hitr parsat ampak user ze lahko umes tipka
-// user lahko aktivira piton mode z !p al pa shift enter
-
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Center(
-        child: Container(
-          width: 512,
-          height: 200,
-          color: Colors.grey[500].withOpacity(0.8),
-          child: Center(
-            child: FlatButton(
-              child: Text('asdf'),
-              onPressed: () => print('asdf'),
-            ),
-          ),
-        ),
+    return MaterialApp(
+      home: Center(
+        child: Search(),
       ),
     );
   }

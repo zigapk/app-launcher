@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:threading/threading.dart';
 import 'package:ini/ini.dart';
 import 'package:path/path.dart';
+import 'package:app_launcher/models/entry.dart';
 
 // TODO: this parser only uses default, non localized desktop entry values (see vlc.desktop for example)
 
@@ -25,7 +26,7 @@ const ITEM_ICON = 'Icon';
 const TYPE_APPLICATION = 'Application';
 
 class DesktopEntries {
-  List<Map<String, dynamic>> entries = new List<Map<String, dynamic>>();
+  List<Entry> entries = new List<Entry>();
 
   Future parse() async {
     for (String dir in DIRECTORIES) {
@@ -86,20 +87,20 @@ class DesktopEntries {
             config.get(SECTION_DESKTOP_ENTRY, ITEM_CATEGORIES).split(';');
 
       // name of the desktop file without .desktop appendix to use for gtk-launch
-      String launchable = basename(file.path);
+      String launchName = basename(file.path);
       // all passed to this function already end with ".desktop", which is 8 characters long
-      launchable = launchable.substring(0, launchable.length - 8);
+      launchName = launchName.substring(0, launchName.length - 8);
 
       // add to list of entries
-      entries.add({
-        'name': name,
-        'genericName': genericName,
-        'comment': comment,
-        'icon': icon,
-        'keywords': keywords,
-        'categories': categories,
-        'launchable': launchable,
-      });
+      entries.add(new Entry(
+          name: name,
+          launchName: launchName,
+          icon: icon,
+          genericName: genericName,
+          comment: comment,
+          categories: categories,
+          keywords: keywords,
+      ));
     } catch (Exception) {
       // ignore failed files
     }
