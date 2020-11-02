@@ -12,22 +12,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'App Launcher',
-      theme: ThemeData(
-        backgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
-      ),
-      home: Center(
-        // child: Text('asdf'),
-        child: RaisedButton(
-          child: Text('Linux app launcher.'),
-          onPressed: () async {
-            final stopwatch = Stopwatch()..start();
-            DesktopEntries entries = new DesktopEntries();
-            await entries.parse();
-            print('Parse executed in ${stopwatch.elapsed} and found ${entries.entries.length} entries.');
-          },
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Center(
+        child: Container(
+          width: 512,
+          height: 200,
+          color: Colors.grey[500].withOpacity(0.8),
+          child: Center(
+            child: FlatButton(
+              child: Text('asdf'),
+              onPressed: () => print('asdf'),
+            ),
+          ),
         ),
       ),
     );
